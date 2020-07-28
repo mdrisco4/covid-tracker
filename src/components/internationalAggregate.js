@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Title = styled.div`
   text-align: center;
   text-decoration: underline;
-  font-size: 25px;
+  font-size: 30px;
 `;
 
 const FlexData = styled.div`
