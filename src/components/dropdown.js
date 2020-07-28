@@ -49,16 +49,6 @@ function Dropdown({ title, items = [], multiselect = false }) {
 
 
 
-  const TotalCases = styled.div`
-    width: 50%;
-    text-align: right;
-  `;
-
-  const NewCases = styled.div`
-    width: 50%;
-    text-align: right;
-  `;
-
   const DDWrapper = styled.div`
     border: 1px solid black;
     width: 25%;
@@ -102,8 +92,6 @@ function Dropdown({ title, items = [], multiselect = false }) {
 
   return (
     <>
-      <TotalCases>total cases:</TotalCases>
-      <NewCases>new cases:</NewCases>
       <DDWrapper>
         <DDHeader
           tabIndex={0}

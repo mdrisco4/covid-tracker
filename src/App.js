@@ -27,6 +27,7 @@ const PieChartContainer = styled.div`
   width: 30%;
   margin-left: auto;
   margin-right: auto;
+  /* position: absolute; */
 `;
 
 fetch("https://covidtracking.com/api/v1/us/daily.json")
@@ -651,8 +652,37 @@ export default class App extends Component {
         </Intro>
         <VirusPic src={require("./images/covid-image.jpeg")} alt="Covid Pic" />
         <CurrentDate>{today}</CurrentDate>
-        <AmericanAggregate></AmericanAggregate>
-        <InternationalAggregate></InternationalAggregate>
+        <div
+        style={{
+          display: "flex",
+        }}>
+        <div
+        style={{
+          width: "50%",
+        }}
+        >
+        <AmericanAggregate />
+        <Dropdown title="select a state" 
+        style={{
+          textAlign: "center",
+        }}
+        items={items} 
+        />
+        </div>
+        <div
+        style={{
+          width: "50%",
+        }}
+        >
+        <InternationalAggregate />
+        <Dropdown title="select a state" 
+        style={{
+          textAlign: "center",
+        }}
+        items={items} 
+        />
+        </div>
+        </div>
         {/* <div>
         <h3 style={{ position: "relative", width: 600, height: 550 }}>Chart Samples</h3>
         <Line
@@ -757,12 +787,21 @@ export default class App extends Component {
           />
         </PieChartContainer>
 
-        <Dropdown title="select a state" 
+        {/* <Dropdown title="select a state" 
         style={{
           textAlign: "center",
+          // position: "absolute",
+          // zIndex: "1",
         }}
         items={items} 
-        />
+        /> */}
+
+
+
+
+
+
+
 
 
 

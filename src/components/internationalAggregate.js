@@ -59,7 +59,7 @@ class InternationalAggregate extends Component {
   render() {
     return (
       <>
-        <Title>International Cases</Title>
+        <Title>Worldwide Cases</Title>
         <FlexData>
           <FlexElement>
             <DailyCases>New Cases: </DailyCases>
