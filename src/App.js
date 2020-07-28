@@ -10,12 +10,17 @@ import { PieChart } from "react-minimal-pie-chart";
 
 const Intro = styled.div`
   text-align: center;
+  font-size: 30px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const VirusPic = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 60%;
 `;
 
 const CurrentDate = styled.div`
@@ -648,8 +653,8 @@ export default class App extends Component {
     return (
       <div className="App">
         <Intro>
-          This is an interactive Covid-19 tracker app with data for individual
-          countries and states
+          An interactive Covid-19 tracker app with data for individual
+          states and nations
         </Intro>
         <VirusPic src={require("./images/covid-image.jpeg")} alt="Covid Pic" />
         <CurrentDate>{today}</CurrentDate>
@@ -663,7 +668,7 @@ export default class App extends Component {
         }}
         >
         <AmericanAggregate />
-        <Dropdown title="select a state" 
+        <Dropdown title="Select a State" 
         style={{
           textAlign: "center",
         }}
@@ -676,7 +681,7 @@ export default class App extends Component {
         }}
         >
         <InternationalAggregate />
-        <Dropdown title="select a state" 
+        <Dropdown title="Select a State" 
         style={{
           textAlign: "center",
         }}

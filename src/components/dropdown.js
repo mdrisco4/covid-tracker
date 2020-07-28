@@ -51,7 +51,7 @@ function Dropdown({ title, items = [], multiselect = false }) {
 
   const DDWrapper = styled.div`
     border: 1px solid black;
-    width: 25%;
+    width: 40%;
     margin-right: auto;
     margin-left: auto;
   `;
@@ -64,7 +64,9 @@ function Dropdown({ title, items = [], multiselect = false }) {
 
   const DDHeaderTitle = styled.div``;
 
-  const DDHeaderTitleBold = styled.p``;
+  const DDHeaderTitleBold = styled.p`
+  font-size: 20px;
+  `;
 
   const DDHeaderActionWrapper = styled.div``;
 
@@ -83,12 +85,15 @@ function Dropdown({ title, items = [], multiselect = false }) {
   const StateButton = styled.button`
     width: 100%;
     background-color: white;
+    height: 30px;
     &:hover {
       background-color: pink;
     }
   `;
 
-  const StateName = styled.span``;
+  const StateName = styled.span`
+   font-size: 16px;
+  `;
 
   return (
     <>
