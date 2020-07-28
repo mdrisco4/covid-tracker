@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Title = styled.div`
   text-align: center;
   text-decoration: underline;
+  font-size: 25px;
 `;
 
 const FlexData = styled.div`
@@ -16,21 +17,27 @@ const FlexElement = styled.div`
 
 const DailyCases = styled.div`
   text-align: right;
+  font-size: 25px;
 `;
 
 const TotalCases = styled.div`
   text-align: right;
+  font-size: 25px;
 `;
 
 const DailyDeaths = styled.div`
   text-align: right;
+  font-size: 25px;
 `;
 
 const TotalDeaths = styled.div`
   text-align: right;
+  font-size: 25px;
 `;
 
-const Numbers = styled.div``;
+const Numbers = styled.div`
+font-size: 25px;
+`;
 
 class AmericanAggregate extends Component {
   constructor(props) {

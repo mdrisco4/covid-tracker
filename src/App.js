@@ -21,6 +21,7 @@ const VirusPic = styled.img`
 const CurrentDate = styled.div`
   text-align: center;
   font-weight: bold;
+  font-size: 35px;
 `;
 
 const PieChartContainer = styled.div`
