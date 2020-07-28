@@ -3,10 +3,7 @@ import AmericanAggregate from "./components/americanAggregate";
 import Dropdown from "./components/dropdown";
 import InternationalAggregate from "./components/internationalAggregate";
 import styled from "styled-components";
-// import { Line } from "react-chartjs-2"
 import { PieChart } from "react-minimal-pie-chart";
-
-
 
 const Intro = styled.div`
   text-align: center;
@@ -29,12 +26,22 @@ const CurrentDate = styled.div`
   font-size: 35px;
 `;
 
+const CaseUpdateFlexBox = styled.div`
+  display: flex;
+`;
+
+const CasesAndDropDown = styled.div`
+  width: 50%;
+`;
+
 const PieChartContainer = styled.div`
   width: 30%;
   margin-left: auto;
   margin-right: auto;
   /* position: absolute; */
 `;
+
+const Nations = [];
 
 fetch("https://covidtracking.com/api/v1/us/daily.json")
   .then((response) => response.json())
@@ -44,9 +51,23 @@ fetch("https://covidtracking.com/api/v1/states/current.json")
   .then((response) => response.json())
   .then((data) => console.log(data));
 
-// fetch("https://api.covid19api.com/summary")
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
+fetch("https://api.covid19api.com/summary")
+  .then((response) => response.json())
+  // .then((data) => console.log(data.Countries));
+  .then((data) => {
+    Nations.push(...data.Countries);
+  });
+
+console.log(Nations);
+
+const NationNames = [
+  {
+    id: 0,
+    value: Nations,
+    selected: false,
+    key: "location",
+  },
+];
 
 export default class App extends Component {
   constructor(props) {
@@ -337,7 +358,7 @@ export default class App extends Component {
   render() {
     // const { list } = this.props;
     // const { listOpen, headerTitle } = this.state;
-    const items = [
+    const States = [
       {
         id: 0,
         value: "Alaska",
@@ -645,6 +666,14 @@ export default class App extends Component {
         key: "location",
       },
     ];
+    // const NationNames = [
+    //   {
+    //   id: 0,
+    //     value: Nations[0],
+    //     selected: false,
+    //     key: "location",
+    // }
+    // ]
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, "0");
     var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -653,52 +682,21 @@ export default class App extends Component {
     return (
       <div className="App">
         <Intro>
-          An interactive Covid-19 tracker app with data for individual
-          states and nations
+          An interactive Covid-19 tracker app with data for individual states
+          and nations
         </Intro>
         <VirusPic src={require("./images/covid-image.jpeg")} alt="Covid Pic" />
         <CurrentDate>{today}</CurrentDate>
-        <div
-        style={{
-          display: "flex",
-        }}>
-        <div
-        style={{
-          width: "50%",
-        }}
-        >
-        <AmericanAggregate />
-        <Dropdown title="Select a State" 
-        style={{
-          textAlign: "center",
-        }}
-        items={items} 
-        />
-        </div>
-        <div
-        style={{
-          width: "50%",
-        }}
-        >
-        <InternationalAggregate />
-        <Dropdown title="Select a State" 
-        style={{
-          textAlign: "center",
-        }}
-        items={items} 
-        />
-        </div>
-        </div>
-        {/* <div>
-        <h3 style={{ position: "relative", width: 600, height: 550 }}>Chart Samples</h3>
-        <Line
-        options={{
-          responsive: true
-        }}
-        data={this.state.data}
-        />
-      </div> */}
-
+        <CaseUpdateFlexBox>
+          <CasesAndDropDown>
+            <AmericanAggregate />
+            <Dropdown title="Select a State" items={States} />
+          </CasesAndDropDown>
+          <CasesAndDropDown>
+            <InternationalAggregate />
+            <Dropdown title="Select a State" items={NationNames} />
+          </CasesAndDropDown>
+        </CaseUpdateFlexBox>
         <PieChartContainer>
           <PieChart
             data={[
@@ -792,162 +790,6 @@ export default class App extends Component {
             ]}
           />
         </PieChartContainer>
-
-        {/* <Dropdown title="select a state" 
-        style={{
-          textAlign: "center",
-          // position: "absolute",
-          // zIndex: "1",
-        }}
-        items={items} 
-        /> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* <Dropdown
-  title="Select location"
-  list={this.state.location}
-  /> */}
-
-
-
-        {/* 
-        <div className="dd-wrapper">
-          <div className="dd-header">
-            <div className="dd-header-title"></div>
-          </div>
-          <ul className="dd-list">
-            <li className="dd-list-item">dfsfds</li>
-            <li className="dd-list-item">fdsgds</li>
-            <li className="dd-list-item">fdsfds</li>
-          </ul>
-        </div>
-
-        <div className="dd-wrapper">
-          <div className="dd-header" onClick={() => this.toggleList()}>
-            <div className="dd-header-title">{headerTitle}</div>
-            {listOpen ? (
-              <div>up</div>
-              // <FontAwesome name="angle-up" size="2x" />
-            ) : (
-              <div>dn</div>
-              // <FontAwesome name="angle-down" size="2x" />
-            )}
-          </div>
-          {listOpen && (
-            <ul className="dd-list">
-              {list.map((item) => (
-                <li className="dd-list-item" key={item.id}>
-                  {item.title}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div> */}
-
-        {/* <PieChartContainer>
-          <PieChart
-            data={[
-              {
-                title: "Alaska",
-                value: this.state.Alaska,
-                color: "rgb(255, 0, 0)",
-              },
-              {
-                title: "Alabama",
-                value: this.state.Alabama,
-                color: "rgb(240, 0, 0)",
-              },
-              {
-                title: "Arkansas",
-                value: this.state.Arkansas,
-                color: "rgb(225, 0, 0)",
-              },
-              {
-                title: "Arizona",
-                value: this.state.Arizona,
-                color: "rgb(210, 0, 0)",
-              },
-              {
-                title: "California",
-                value: this.state.California,
-                color: "rgb(195, 0, 0)",
-              },
-              {
-                title: "Colorado",
-                value: this.state.Colorado,
-                color: "rgb(180, 0, 0)",
-              },
-              {
-                title: "Connecticut",
-                value: this.state.Connecticut,
-                color: "rgb(165, 0, 0)",
-              },
-              { title: "DC", value: this.state.DC, color: "rgb(150 ,0, 0)" },
-              {
-                title: "Deleware",
-                value: this.state.Deleware,
-                color: "rgb(135 ,0, 0)",
-              },
-              {
-                title: "Florida",
-                value: this.state.Florida,
-                color: "rgb(120 ,0, 0)",
-              },
-              {
-                title: "Georgia",
-                value: this.state.Georgia,
-                color: "rgb(105 ,0, 0)",
-              },
-              {
-                title: "Hawaii",
-                value: this.state.Hawaii,
-                color: "rgb(90 ,0, 0)",
-              },
-              { title: "Iowa", value: this.state.Iowa, color: "rgb(75 ,0, 0)" },
-              {
-                title: "Idaho",
-                value: this.state.Idaho,
-                color: "rgb(60 ,0, 0)",
-              },
-              {
-                title: "Illinois",
-                value: this.state.Illinois,
-                color: "rgb(255 ,255, 0)",
-              },
-              {
-                title: "Indiana",
-                value: this.state.Indiana,
-                color: "rgb(255 ,240, 0)",
-              },
-              {
-                title: "Kansas",
-                value: this.state.Kansas,
-                color: "rgb(255 ,225, 0)",
-              },
-              {
-                title: "Kentucky",
-                value: this.state.Kentucky,
-                color: "rgb(255 ,210, 0)",
-              },
-              {
-                title: "Louisiana",
-                value: this.state.Louisiana,
-                color: "rgb(255 ,195, 0)",
-              },
-            ]}
-          />
-        </PieChartContainer> */}
       </div>
     );
   }

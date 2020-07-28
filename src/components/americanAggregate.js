@@ -55,7 +55,6 @@ class AmericanAggregate extends Component {
       .then((response) => response.json())
       // .then((data) => console.log(data[0].date))
       .then((response) => {
-        // this.setState({ today: response[0].date });
         this.setState({ todayCases: response[0].positiveIncrease });
         this.setState({ totalCases: response[0].positive });
         this.setState({ todayDeaths: response[0].deathIncrease });

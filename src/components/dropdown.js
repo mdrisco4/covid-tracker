@@ -68,9 +68,11 @@ function Dropdown({ title, items = [], multiselect = false }) {
   font-size: 20px;
   `;
 
-  const DDHeaderActionWrapper = styled.div``;
+  const DDHeaderActionWrapper = styled.div`
+  `;
 
-  const DDHeaderAction = styled.p``;
+  const DDHeaderAction = styled.p`
+  `;
 
   const DDList = styled.ul`
     margin-right: auto;

@@ -55,7 +55,6 @@ class InternationalAggregate extends Component {
       .then((response) => response.json())
       // .then((data) => console.log(data))
       .then((response) => {
-        // this.setState({ today: response[0].date });
         this.setState({ todayCases: response.Global.NewConfirmed });
         this.setState({ totalCases: response.Global.TotalConfirmed });
         this.setState({ todayDeaths: response.Global.NewDeaths });
