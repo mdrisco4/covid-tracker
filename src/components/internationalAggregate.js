@@ -392,7 +392,7 @@ class InternationalAggregate extends Component {
           </FlexElement>
         </FlexData>
         <Dropdown title="Select a State" items={States} />
-
+    {/* <div>{this.state.nations}</div> */}
       </>
     );
   }
