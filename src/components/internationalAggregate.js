@@ -49,6 +49,7 @@ class InternationalAggregate extends Component {
       totalCases: "",
       todayDeaths: "",
       totalDeaths: "",
+      nations: [],
     };
   }
   componentDidMount() {
@@ -60,6 +61,7 @@ class InternationalAggregate extends Component {
         this.setState({ totalCases: response.Global.TotalConfirmed });
         this.setState({ todayDeaths: response.Global.NewDeaths });
         this.setState({ totalDeaths: response.Global.TotalDeaths });
+        this.setState({ nations: response });
       });
   }
 

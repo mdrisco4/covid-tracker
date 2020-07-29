@@ -49,6 +49,7 @@ class AmericanAggregate extends Component {
       totalCases: "",
       todayDeaths: "",
       totalDeaths: "",
+      states: [],
     };
   }
   componentDidMount() {
@@ -60,6 +61,7 @@ class AmericanAggregate extends Component {
         this.setState({ totalCases: response[0].positive });
         this.setState({ todayDeaths: response[0].deathIncrease });
         this.setState({ totalDeaths: response[0].death });
+        this.setState({ states: response });
       });
   }
 
