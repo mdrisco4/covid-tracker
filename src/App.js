@@ -690,11 +690,11 @@ export default class App extends Component {
         <CaseUpdateFlexBox>
           <CasesAndDropDown>
             <AmericanAggregate />
-            <Dropdown title="Select a State" items={States} />
+            {/* <Dropdown title="Select a State" items={States} /> */}
           </CasesAndDropDown>
           <CasesAndDropDown>
             <InternationalAggregate />
-            <Dropdown title="Select a State" items={NationNames} />
+            {/* <Dropdown title="Select a State" items={States} /> */}
           </CasesAndDropDown>
         </CaseUpdateFlexBox>
         <PieChartContainer>
