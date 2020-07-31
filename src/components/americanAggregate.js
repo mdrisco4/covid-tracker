@@ -68,6 +68,12 @@ class AmericanAggregate extends Component {
   render() {
     const States = [
       {
+        id: 51,
+        value: "US Total",
+        selected: false,
+        key: "location",
+      },
+      {
         id: 0,
         value: "Alaska",
         selected: false,
