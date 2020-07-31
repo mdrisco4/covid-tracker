@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AmericanAggregate from "./components/americanAggregate";
-import Dropdown from "./components/dropdown";
+// import Dropdown from "./components/dropdown";
 import InternationalAggregate from "./components/internationalAggregate";
 import styled from "styled-components";
 import { PieChart } from "react-minimal-pie-chart";
@@ -60,14 +60,14 @@ fetch("https://api.covid19api.com/summary")
 
 console.log(Nations);
 
-const NationNames = [
-  {
-    id: 0,
-    value: Nations,
-    selected: false,
-    key: "location",
-  },
-];
+// const NationNames = [
+//   {
+//     id: 0,
+//     value: Nations,
+//     selected: false,
+//     key: "location",
+//   },
+// ];
 
 export default class App extends Component {
   constructor(props) {
