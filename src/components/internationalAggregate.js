@@ -62,7 +62,10 @@ class InternationalAggregate extends Component {
         this.setState({ todayDeaths: response.Global.NewDeaths });
         this.setState({ totalDeaths: response.Global.TotalDeaths });
         this.setState({ nations: response });
-      });
+      //   this.state.data.map(code => {
+      //     this.setState({ nations: [...this.state.nations, code.Countries] })
+      // });
+    })
   }
 
   render() {
