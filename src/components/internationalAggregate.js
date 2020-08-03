@@ -37,7 +37,7 @@ const TotalDeaths = styled.div`
 `;
 
 const Numbers = styled.div`
-font-size: 25px;
+  font-size: 25px;
 `;
 
 class InternationalAggregate extends Component {
@@ -55,31 +55,20 @@ class InternationalAggregate extends Component {
   componentDidMount() {
     fetch("https://api.covid19api.com/summary")
       .then((response) => response.json())
-      // .then((data) => console.log(data))
-
-      // .then((response) => {
-      //   this.setState({ todayCases: response.Global.NewConfirmed });
-      //   this.setState({ totalCases: response.Global.TotalConfirmed });
-      //   this.setState({ todayDeaths: response.Global.NewDeaths });
-      //   this.setState({ totalDeaths: response.Global.TotalDeaths });
-      //   this.setState({ nations: response });
-
-      //   this.state.data.map(code => {
-      //     this.setState({ nations: [...this.state.nations, code.Countries] })
-      // });
-
-      .then((data) => {
-        this.state.nations.push(...data.Countries);
-      });
-    }
-  //   )
-  // }
-
+      .then((response) => {
+        this.setState({ todayCases: response.Global.NewConfirmed });
+        this.setState({ totalCases: response.Global.TotalConfirmed });
+        this.setState({ todayDeaths: response.Global.NewDeaths });
+        this.setState({ totalDeaths: response.Global.TotalDeaths });
+        this.state.nations.push(...response.Countries);
+      })
+    console.log(this.state.nations);
+  }
   render() {
-    const States = [
+    const Nations = [
       {
         id: 0,
-        value: "Alaska",
+        value: this.state.nations[0],
         selected: false,
         key: "location",
       },
@@ -395,15 +384,15 @@ class InternationalAggregate extends Component {
             <TotalDeaths>Total Deaths: </TotalDeaths>
           </FlexElement>
           <FlexElement>
-    <div>{this.state.nations} dcnk</div>
-            {/* <Numbers>{this.state.todayCases}</Numbers>
+
+            <Numbers>{this.state.todayCases}</Numbers>
             <Numbers>{this.state.totalCases}</Numbers>
             <Numbers>{this.state.todayDeaths}</Numbers>
-            <Numbers>{this.state.totalDeaths}</Numbers> */}
+            <Numbers>{this.state.totalDeaths}</Numbers>
           </FlexElement>
         </FlexData>
-        <Dropdown title="Select a State" items={States} />
-    {/* <div>{this.state.nations}</div> */}
+        <Dropdown title="Select a State" items={Nations} />
+        {/* <div>{this.state.nations}</div> */}
       </>
     );
   }
