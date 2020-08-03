@@ -56,17 +56,24 @@ class InternationalAggregate extends Component {
     fetch("https://api.covid19api.com/summary")
       .then((response) => response.json())
       // .then((data) => console.log(data))
-      .then((response) => {
-        this.setState({ todayCases: response.Global.NewConfirmed });
-        this.setState({ totalCases: response.Global.TotalConfirmed });
-        this.setState({ todayDeaths: response.Global.NewDeaths });
-        this.setState({ totalDeaths: response.Global.TotalDeaths });
-        this.setState({ nations: response });
+
+      // .then((response) => {
+      //   this.setState({ todayCases: response.Global.NewConfirmed });
+      //   this.setState({ totalCases: response.Global.TotalConfirmed });
+      //   this.setState({ todayDeaths: response.Global.NewDeaths });
+      //   this.setState({ totalDeaths: response.Global.TotalDeaths });
+      //   this.setState({ nations: response });
+
       //   this.state.data.map(code => {
       //     this.setState({ nations: [...this.state.nations, code.Countries] })
       // });
-    })
-  }
+
+      .then((data) => {
+        this.state.nations.push(...data.Countries);
+      });
+    }
+  //   )
+  // }
 
   render() {
     const States = [
@@ -388,10 +395,11 @@ class InternationalAggregate extends Component {
             <TotalDeaths>Total Deaths: </TotalDeaths>
           </FlexElement>
           <FlexElement>
-            <Numbers>{this.state.todayCases}</Numbers>
+    <div>{this.state.nations} dcnk</div>
+            {/* <Numbers>{this.state.todayCases}</Numbers>
             <Numbers>{this.state.totalCases}</Numbers>
             <Numbers>{this.state.todayDeaths}</Numbers>
-            <Numbers>{this.state.totalDeaths}</Numbers>
+            <Numbers>{this.state.totalDeaths}</Numbers> */}
           </FlexElement>
         </FlexData>
         <Dropdown title="Select a State" items={States} />
