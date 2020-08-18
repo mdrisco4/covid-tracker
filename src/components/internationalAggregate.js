@@ -68,7 +68,7 @@ class InternationalAggregate extends Component {
     const Nations = [
       {
         id: 0,
-        value: this.state.nations[0],
+        value: this.state.todayCases,
         selected: false,
         key: "location",
       },

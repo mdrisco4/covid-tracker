@@ -53,9 +53,10 @@ class AmericanAggregate extends Component {
     };
   }
   componentDidMount() {
-    fetch("https://covidtracking.com/api/v1/us/daily.json")
+    // fetch("https://covidtracking.com/api/v1/us/daily.json")
+    fetch("https://api.covidtracking.com/v1/us/daily.json")
       .then((response) => response.json())
-      // .then((data) => console.log(data[0].date))
+      // .then((data) => console.log(data[0]))
       .then((response) => {
         this.setState({ todayCases: response[0].positiveIncrease });
         this.setState({ totalCases: response[0].positive });
